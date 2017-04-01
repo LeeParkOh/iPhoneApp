@@ -6,22 +6,46 @@
 //  Copyright © 2017년 Jihun Oh. All rights reserved.
 //
 
-import UIKit
 
+
+import UIKit
+import Alamofire
 
 
 class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
-    
     var page = 1
     
     lazy var list : [BoardVO] = {
         var datalist = [BoardVO]()
         return datalist
     }()
-   
-   /*
+
     
+    
+    @IBAction func Refresh(_ sender: Any) {
+        
+        self.list.removeAll()
+        
+        NSLog("CLICK !!!!! ")
+
+        self.viewDidLoad()
+        self.viewWillAppear(true)
+        //self.viewIfLoaded
+        self.loadView()
+        
+        
+        
+    }
+    
+    
+   
+   
+    
+   
+    /*
+     
+     
     var dataset = [
     
   
@@ -55,13 +79,18 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
  
  */
     
+    
+    
+    
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
+        NSLog("555")
         return self.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       
+       NSLog("666")
         
         let row = self.list[indexPath.row]
         
@@ -88,38 +117,42 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         NSLog("\(hit_cnt) <<< good .")
 
+        NSLog("777")
         return cell
         
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //NSLog("\(indexPath.row)번째 데이터가 클릭됨.")
+        //NSLog("\(indexPath.row)∫번째 데이터가 클릭됨.")
         NSLog("\(indexPath.row)번째 데이터가 클릭됨.")
         
     }
-   
-   
+    
     
     
     override func viewDidLoad() {
+        NSLog("111")
         
-        let url = "http://feelfos.cafe24.com/sample/selectBoardList.do"
+        let url = "http://feelfos.cafe24.com/politics/searchPoliticsBoardInfo.do"
         
         let apiURI : URL! = URL(string: url)
-        
         let apidata = try! Data(contentsOf: apiURI)
         
+        
+        
+        
         let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
+        let log2 = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
         
-        NSLog("API API Result = \(log)")
+        //NSLog("API API Result = \(log)")
+        //NSLog("API API Result2 = \(log2)")
         
-        
-        do {
-            
+         do {
+            NSLog("222")
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
             
-            let list = apiDictionary["list"] as! NSArray
+            let list = apiDictionary["PoliticsList"] as! NSArray
             
             for row in list {
                 
@@ -127,11 +160,11 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 
                 let mvo = BoardVO( )
                 
-                mvo.idx = r["IDX"] as? String
-                mvo.rnum = r["RNUM"] as? String
-                mvo.hit_cnt = ((r["HIT_CNT"] as! NSString).integerValue)
-                mvo.crea_dtm = r["CREA_DTM"] as? String
-                mvo.title = r["TITLE"] as? String
+                mvo.idx = r["userNm"] as? String
+                mvo.rnum = r["boardBody1"] as? String
+                mvo.hit_cnt = ((r["boardSearchCnt"] as! NSString).integerValue)
+                mvo.crea_dtm = r["regDt"] as? String
+                mvo.title = r["boardTitle"] as? String
                 
                 self.list.append(mvo)
                 
@@ -142,27 +175,24 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             
             
-            
-            
         }
-         catch
+        
+        catch
          {
             
             
         }
-        
-        
-        
-        
     
         
+        NSLog("333")
         super.viewDidLoad()
+        NSLog("444")
+        
+        
+        // Do any additional setup after loading the view, typically from a nib.
 
         
-        
-                // Do any additional setup after loading the view, typically from a nib.
-        
-        
+ 
     }
 
     override func didReceiveMemoryWarning() {

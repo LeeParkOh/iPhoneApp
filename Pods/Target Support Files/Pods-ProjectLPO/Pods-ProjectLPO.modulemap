@@ -1,0 +1,6 @@
+framework module Pods_ProjectLPO {
+  umbrella header "Pods-ProjectLPO-umbrella.h"
+
+  export *
+  module * { export * }
+}
