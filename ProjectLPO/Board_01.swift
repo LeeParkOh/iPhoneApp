@@ -1,110 +1,112 @@
 //
-//  ViewController.swift
+//  Board_01.swift
 //  ProjectLPO
 //
-//  Created by Jihun Oh on 2017. 3. 14..
+//  Created by Jihun Oh on 2017. 4. 11..
 //  Copyright © 2017년 Jihun Oh. All rights reserved.
 //
-
-
 
 import UIKit
 import Alamofire
 
 
-class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
+
+class  Board_01: UIViewController , UITableViewDelegate, UITableViewDataSource {
+    
     var page = 1
     
     lazy var list : [BoardVO] = {
         var datalist = [BoardVO]()
         return datalist
     }()
-
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     @IBAction func Refresh(_ sender: Any) {
         
-                self.list.removeAll()
+        self.list.removeAll()
         
-       NSLog("CLICK !!!!! ")
-
-       self.viewDidLoad()
+        NSLog("CLICK !!!!! ")
         
-       self.viewWillAppear(true)
+        self.viewDidLoad()
+        
+        self.viewWillAppear(true)
         
         
-       /// tableView.reloadData()
+        /// tableView.reloadData()
         //self.view.layoutIfNeeded()
         
-      // self.viewIfLoaded
+        // self.viewIfLoaded
         
-       // self.loadView() // 이 부분을 수행하면...
+        // self.loadView() // 이 부분을 수행하면...
         
-       self.tableView.reloadData()
+        self.tableView.reloadData()
+        
         
         
     }
     
     
-   
-   
     
-   
+    
+    
+    
     /*
      
      
-    var dataset = [
-    
-  
-        ("FEELFOS","123123456","hoho","2017.03.10", "haha"),
-        ("imosty","123123456","hoho","2017.03.10", "haha")
-        
-        
-    ]
-    
+     var dataset = [
+     
+     
+     ("FEELFOS","123123456","hoho","2017.03.10", "haha"),
+     ("imosty","123123456","hoho","2017.03.10", "haha")
+     
+     
+     ]
+     
      var list : [BoardVO] {
-        
-        var datalist = [BoardVO]( )
-        
-        for (idx, rnum, hitcnt, crea_dtm,title) in self.dataset {
-            
-            let mvo = BoardVO( )
-            
-            mvo.title = title
-            mvo.rnum = rnum
-            mvo.hitcnt = hitcnt
-            mvo.crea_dtm = crea_dtm
-            mvo.idx = idx
-            
-            datalist.append(mvo)
-            
-        }
-   
-        return datalist
-        
-    }
- 
- */
+     
+     var datalist = [BoardVO]( )
+     
+     for (idx, rnum, hitcnt, crea_dtm,title) in self.dataset {
+     
+     let mvo = BoardVO( )
+     
+     mvo.title = title
+     mvo.rnum = rnum
+     mvo.hitcnt = hitcnt
+     mvo.crea_dtm = crea_dtm
+     mvo.idx = idx
+     
+     datalist.append(mvo)
+     
+     }
+     
+     return datalist
+     
+     }
+     
+     */
     
     
     
     
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
         NSLog("555")
-        
         return self.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       NSLog("666")
+        NSLog("666")
         
         let row = self.list[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell2")!
         
         let idx = cell.viewWithTag(101) as? UILabel
         let rnum = cell.viewWithTag(102) as? UILabel
@@ -118,7 +120,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         //cell.detailTextLabel?.text = row.crea_dtm
         
         //cell.textLabel?.text = idx
-       //cell.textLabel?.text = row.title
+        //cell.textLabel?.text = row.title
         
         idx?.text       = row.idx
         rnum?.text      = row.rnum
@@ -128,10 +130,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         boardBestCnt?.text = "\(row.boardBestCnt!)"
         reply?.text = "\(row.reply!)"
         
-            
+        
         
         NSLog("\(hit_cnt) <<< good .")
-
+        
         NSLog("777")
         return cell
         
@@ -149,7 +151,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         NSLog("111")
         
-        let url = "http://feelfos.cafe24.com/politics/searchPoliticsBoardInfo.do"
+        let url = "http://feelfos.cafe24.com/politics/searchPoliticsBoardInfo.do?boardCd=002"
         
         let apiURI : URL! = URL(string: url)
         let apidata = try! Data(contentsOf: apiURI)
@@ -163,7 +165,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         NSLog("API API Result = \(log)")
         //NSLog("API API Result2 = \(log2)")
         
-         do {
+        do {
             NSLog("222")
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
             
@@ -182,7 +184,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 mvo.title = r["boardTitle"] as? String
                 mvo.reply = ((r["replyCnt"] as! NSString).integerValue)
                 mvo.boardBestCnt = ((r["boardBestCnt"] as! NSString).integerValue)
-                                
+                
                 self.list.append(mvo)
                 
                 NSLog("cut data = \(mvo.hit_cnt)")
@@ -191,36 +193,32 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             }
             
             
-
             
+        }
+            
+        catch
+        {
             
             
         }
         
-        catch
-         {
-            
-            
-        }
-    
         
         NSLog("333")
-        
         super.viewDidLoad()
         NSLog("444")
         
         
         // Do any additional setup after loading the view, typically from a nib.
-
         
- 
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

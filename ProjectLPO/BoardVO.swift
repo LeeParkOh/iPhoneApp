@@ -15,5 +15,7 @@ class BoardVO {
     var hit_cnt : Int?
     var crea_dtm : String?
     var title : String?
+    var boardBestCnt : Int?
+    var reply : Int?
     
 }
