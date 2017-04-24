@@ -23,6 +23,7 @@
 		1314EA551E93E5110029365C /* PageControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314EA541E93E5110029365C /* PageControll.swift */; };
 		1346CA961E9D07D40062AEF0 /* Board_01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346CA951E9D07D40062AEF0 /* Board_01.swift */; };
 		1346CA981E9D0B770062AEF0 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 1346CA971E9D0B770062AEF0 /* refresh.png */; };
+		1346CA9C1EA8FDD50062AEF0 /* MyWriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346CA9B1EA8FDD50062AEF0 /* MyWriteController.swift */; };
 		138B4ED51E8BFE0300DF8551 /* WriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B4ED41E8BFE0300DF8551 /* WriteController.swift */; };
 		DAB087B7BB6C39610B25C84D /* Pods_ProjectLPO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B192B568D7940FA0138A3EB6 /* Pods_ProjectLPO.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		1314EA541E93E5110029365C /* PageControll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControll.swift; sourceTree = "<group>"; };
 		1346CA951E9D07D40062AEF0 /* Board_01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board_01.swift; sourceTree = "<group>"; };
 		1346CA971E9D0B770062AEF0 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = refresh.png; path = ../../../Downloads/refresh.png; sourceTree = "<group>"; };
+		1346CA9B1EA8FDD50062AEF0 /* MyWriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWriteController.swift; sourceTree = "<group>"; };
 		138B4ED41E8BFE0300DF8551 /* WriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteController.swift; sourceTree = "<group>"; };
 		8B8F19751B8EA7D9C8069B38 /* Pods-ProjectLPO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectLPO.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectLPO/Pods-ProjectLPO.release.xcconfig"; sourceTree = "<group>"; };
 		AB3BC1B2A68F4B80101ABC2E /* Pods_ProjectLPOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectLPOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 				1314EA541E93E5110029365C /* PageControll.swift */,
 				13056DC91E781993008864E8 /* Main.storyboard */,
 				13056DC71E781993008864E8 /* ViewController.swift */,
+				1346CA9B1EA8FDD50062AEF0 /* MyWriteController.swift */,
 				1346CA951E9D07D40062AEF0 /* Board_01.swift */,
 				13056DCC1E781993008864E8 /* Assets.xcassets */,
 				13056DCE1E781993008864E8 /* LaunchScreen.storyboard */,
@@ -389,6 +392,7 @@
 				13056DC61E781993008864E8 /* AppDelegate.swift in Sources */,
 				138B4ED51E8BFE0300DF8551 /* WriteController.swift in Sources */,
 				1346CA961E9D07D40062AEF0 /* Board_01.swift in Sources */,
+				1346CA9C1EA8FDD50062AEF0 /* MyWriteController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

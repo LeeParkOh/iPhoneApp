@@ -14,6 +14,9 @@ import Alamofire
 
 class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
+    
+   
+    
     var page = 1
     
     lazy var list : [BoardVO] = {
@@ -147,6 +150,48 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     
     override func viewDidLoad() {
+        
+        let token_check = UserDefaults.standard.string(forKey: "token")!
+        
+        NSLog("Local temp 1 = \(token_check)")
+        
+        if ( token_check == nil )
+        {
+            //UserDefaults.standard.set("feelfos_token", forKey: "token")
+            //UserDefaults.standard.synchronize()
+            
+            
+            NSLog("token check nil = \(token_check)")
+            
+            
+            
+        }
+        else
+        {
+            
+            
+            //self.tabBarController?.selectedIndex = 3
+            //self.tabBarController?.selectedViewController?.viewDidAppear(true)
+          
+            
+            
+            //[self.tabBarController.selectedViewController viewDidAppear:YES];
+            
+            NSLog("token check OK  = \(token_check)")
+        
+        }
+        
+      //  UserDefaults.standard.set("123123213" , forKey: "temp")
+      //  UserDefaults.standard.synchronize()
+        
+      //  let value = UserDefaults.standard.string(forKey: "temp")
+        
+        
+      //  NSLog("Local temp 2 = \(value)")
+      //  NSLog("Local temp 2 = \(value2)")
+        
+        
+        
         NSLog("111")
         
         let url = "http://feelfos.cafe24.com/politics/searchPoliticsBoardInfo.do"
@@ -185,7 +230,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                                 
                 self.list.append(mvo)
                 
-                NSLog("cut data = \(mvo.hit_cnt)")
+                //NSLog("cut data = \(mvo.hit_cnt)")
                 
                 
             }

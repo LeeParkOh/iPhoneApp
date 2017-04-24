@@ -79,8 +79,6 @@ class WriteController : UIViewController {
             }
             
             
-            
-            
             NSLog("\(self.WriteBody.text) <<< good .")
             
             
